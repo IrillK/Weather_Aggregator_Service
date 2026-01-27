@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     
     # Настройки сервисов погоды
     weather_apis: List[str] = [
-        "meteoblue", # https://my.meteoblue.com/packages/current?apikey=zeqBmpfhn4Wsb81H&lat=51.6683&lon=39.192&asl=148&format=json
+        "meteoblue", 
     ]
     
     # Таймауты и рейт-лимиты
