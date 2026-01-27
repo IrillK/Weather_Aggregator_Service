@@ -1,0 +1,8 @@
+fastapi
+httpx
+pydantic
+pydantic-settings
+redis          # для кэширования
+aioredis       # асинхронный redis
+asyncio-throttle  # для rate limiting
+python-dotenv
