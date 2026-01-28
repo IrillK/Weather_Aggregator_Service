@@ -8,18 +8,7 @@ from asyncio_throttle import Throttler
 from app.config import settings
 from app.models import WeatherData, WeatherService, AggregatedWeatherResponse
 
-from geopy.geocoders import Photon
-
 logger = logging.getLogger(__name__)
-
-
-def geocode(city: str) -> Optional[Tuple]:
-    """Функция для определения координат по адресу"""
-    # Вынести функцию в отдельный пакет сервисы
-    geolocator = Photon(user_agent="geoapiExercises")  
-    location = geolocator.geocode(city)
-
-    return (location.latitude, location.longitude)
 
 class WeatherServiceClient:
     """Базовый класс для клиентов погодных сервисов"""
@@ -37,9 +26,6 @@ class WeatherServiceClient:
     async def fetch_weather(self, city: str, country_code: Optional[str] = None) -> Optional[WeatherData]:
         """Абстрактный метод, должен быть реализован в дочерних классах"""
         raise NotImplementedError
-
-
-# ----- Реализовать класс для моего сервиса с бесплатным апи
 
 class MeteoblueenClient(WeatherServiceClient):
     """Клиент для meteoblue API"""
@@ -109,7 +95,6 @@ class OpenWeatherClient(WeatherServiceClient):
             except Exception as e:
                 logger.error(f"OpenWeather API error for {city}: {str(e)}")
                 return None
-
 
 class WeatherAggregator:
     """Основной сервис для агрегации данных от разных провайдеров"""
