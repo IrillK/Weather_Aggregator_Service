@@ -7,6 +7,7 @@ from asyncio_throttle import Throttler
 
 from app.config import settings
 from app.models import WeatherData, WeatherService, AggregatedWeatherResponse
+from app.utils.utils import geocode
 
 logger = logging.getLogger(__name__)
 
@@ -31,8 +32,8 @@ class MeteoblueenClient(WeatherServiceClient):
     """Клиент для meteoblue API"""
     
     BASE_URL = "https://my.meteoblue.com/packages/current"
-    
-    async def fetch_weather(self, city: str) -> Optional[WeatherData]:
+
+    async def fetch_weather(self, city: str, country_code:str, ) -> Optional[WeatherData]:
         async with self.throttler:
             try:
                 lat, lon = geocode(city)

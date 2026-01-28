@@ -1,8 +1,10 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import List, Optional
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
+
     # FastAPI
     app_name: str = "Weather Aggregator"
     debug: bool = False
@@ -22,9 +24,6 @@ class Settings(BaseSettings):
     # Кэширование
     redis_url: str = "redis://localhost:6379"
     cache_ttl: int = 3600  # 60 минут в секундах
-    
-    class Config:
-        env_file = ".env"
 
 
 settings = Settings()
