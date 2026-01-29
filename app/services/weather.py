@@ -51,16 +51,10 @@ class MeteoblueenClient(WeatherServiceClient):
                 return WeatherData(
                     service=WeatherService.METEOBLUE,
                     temperature=data["data_current"]["temperature"],
-                    #feels_like=data["main"]["feels_like"],
-                    #humidity=data["main"]["humidity"],
-                    #pressure=data["main"]["pressure"],
-                    #wind_speed=data["wind"]["speed"],
-                    #description=data["weather"][0]["description"],
-                    #icon=f"http://openweathermap.org/img/wn/{data['weather'][0]['icon']}.png"
                 )
                 
             except Exception as e:
-                logger.error(f"OpenWeather API error for {city}: {str(e)}")
+                logger.error(f"Meteoblue API error for {city} ({lat}:{lon}): {str(e)}")
                 return None
 
 class OpenWeatherClient(WeatherServiceClient):
@@ -108,7 +102,7 @@ class WeatherAggregator:
     
     async def get_weather(
         self, 
-        city: str, # Сделать перекодирование города в координаты
+        city: str,
         country_code: Optional[str] = None,
         services: Optional[List[str]] = None
     ) -> AggregatedWeatherResponse:

@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     app_name: str = "Weather Aggregator"
     debug: bool = False
     
-    # API Keys (добавьте свои ключи в .env файл)
+    # API Keys (ключи в .env файле)
     meteoblue_api_key: Optional[str] = None
     
     # Настройки сервисов погоды

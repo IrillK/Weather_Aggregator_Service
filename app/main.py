@@ -21,7 +21,6 @@ async def lifespan(app: FastAPI):
     """Управление жизненным циклом приложения"""
     # Startup
     logger.info("Starting up Weather Aggregator Service...")
-    
     # Подключаем кэш
     await cache.connect()
     logger.info("Cache connected")
@@ -39,7 +38,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.app_name,
     version="1.0.0",
-    #lifespan=lifespan,
+    lifespan=lifespan,
     docs_url="/docs",
     redoc_url="/redoc"
 )

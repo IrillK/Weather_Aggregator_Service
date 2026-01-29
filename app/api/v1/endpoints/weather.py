@@ -48,7 +48,8 @@ async def get_weather(
         cached_data = await cache.get(cache_key)
         if cached_data:
             logger.info(f"Cache hit for {cache_key}")
-            return AggregatedWeatherResponse(**cached_data, cached=True)
+            cached_data['cached'] = True
+            return AggregatedWeatherResponse(**cached_data)
     
     # Получаем свежие данные
     try:
