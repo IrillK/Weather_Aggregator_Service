@@ -21,24 +21,22 @@
 
 weather_service/  
 ├── app/  
-│ ├── init.py  
-│ ├── main.py # Точка входа FastAPI, настройка приложения  
-│ ├── config.py # Конфигурация (настройки из переменных окружения)  
-│ ├── dependencies.py # Зависимости (например, внедрение сессий БД, кеша)  
-│ ├── models.py # Pydantic-модели (схемы запросов/ответов)  
+│ ├── __init__.py  
+│ ├── main.py # Точка входа    
+│ ├── config.py # Конфигурация (настройки из переменных окружения)   
+│ ├── models.py # Pydantic-модели  
 │ ├── services/  
-│ │ ├── init.py  
+│ │ ├── __init__.py  
 │ │ ├── weather.py # Основная бизнес-логика, работа с внешним API погоды  
 │ │ └── cache.py # Логика кэширования (Redis/In-memory)  
 │ └── api/  
-│ ├── init.py  
-│ └── v1/  
-│ ├── init.py  
-│ └── endpoints/  
-│ ├── init.py  
-│ └── weather.py # Роутеры API (эндпоинты /weather, /forecast)  
+│   └── v1/endpoints/   
+│     ├── __init__.py  
+│     └── weather.py # Роутеры API   
+│ ├── utils/  
+│   ├── __init__.py  
+│   └── utils.py   
 ├── requirements.txt # Зависимости Python  
 ├── Dockerfile # Конфигурация для сборки Docker-образа  
-├── docker-compose.yml # Конфигурация для запуска сервиса и зависимостей (БД, кеш)  
-├── .env.example # Пример файла с переменными окружения  
-└── README.md # Этот файл  
+├── .env    
+└── README.md   
