@@ -51,7 +51,6 @@ app.include_router(
 )
 
 
-
 @app.get("/health")
 async def health_check():
     """Эндпоинт для проверки здоровья сервиса"""

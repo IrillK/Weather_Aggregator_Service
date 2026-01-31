@@ -22,7 +22,8 @@ class Settings(BaseSettings):
     max_requests_per_minute: int = 30
     
     # Кэширование
-    redis_url: str = "redis://localhost:6379"
+    redis_url: str = "redis://redis:6379"  # docker_compouse Или проброс сети
+    #redis_url: str = "redis://localhost:6379"
     cache_ttl: int = 3600  # 60 минут в секундах
 
 
